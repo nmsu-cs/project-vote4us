@@ -1,0 +1,5 @@
+idk how to upload a virtual environment with all of the correct libraries to run this code, but here's the code that I generated.
+At some point, I think we will be able to stray away from having to use a virtual environment, but for the time being, that's
+the only way that I've been able to figure out how to do this.
+I'll create some instructions on how to set up a virtual environment to run this at some point as well, so that we can all run this.
+or not. idk.
