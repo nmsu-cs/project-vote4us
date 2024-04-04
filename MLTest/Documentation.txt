@@ -3,3 +3,43 @@ At some point, I think we will be able to stray away from having to use a virtua
 the only way that I've been able to figure out how to do this.
 I'll create some instructions on how to set up a virtual environment to run this at some point as well, so that we can all run this.
 or not. idk.
+
+I'm currently making instructions on how to replicate making a virtual environment, however THEY ARE NOT COMPLETE yet.
+
+
+
+*** DO NOT PUSH YOUR '.venv' VIRTUAL ENVIRONMENT TO GITHUB ***
+(or do it. idk if it'll really do much tbh. we can just delete the folder anyways)
+
+
+
+(1) SETTING UP THE PYTHON MACHINE LEARNING STUFF (you should only have to do this once. i think)
+
+    * Download Python
+        I think I just downloaded the most recent version using vscode, but it shouldn't matter how you download it.
+
+    * Download pip (maybe)
+        Idk if I needed to download pip or not, but you may need to if the pip commands do not work in step 3. So
+        try that first, and then come back and do this if needed.
+
+
+(2) Instructions To Set Up Virtual Environment:
+
+    * For Windows, type the following in terminal:
+        $ python -m venv .venv
+    OR...
+    * For Mac, type the following in terminal:
+        $ python3 -m venv .venv
+
+    This should create a file called '.venv' that will contain all of your local libraries and stuff for this project.
+
+
+
+(3) Instructions To Install Neccessary Libraries:
+    
+    * type the following in terminal:
+        $ pip install opencv-contrib-python
+        $ pip install cvlib
+    
+    This should download the neccessary libraries that we use for the opencv machine learning model. Not all of the files
+    in these libraries are used, but I guess they're good to have. idk.
