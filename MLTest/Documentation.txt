@@ -1,10 +1,16 @@
-idk how to upload a virtual environment with all of the correct libraries to run this code, but here's the code that I generated.
-At some point, I think we will be able to stray away from having to use a virtual environment, but for the time being, that's
-the only way that I've been able to figure out how to do this.
-I'll create some instructions on how to set up a virtual environment to run this at some point as well, so that we can all run this.
-or not. idk.
+*** INTRODUCTION ***
 
-I'm currently making instructions on how to replicate making a virtual environment, however THEY ARE NOT COMPLETE yet.
+These are instructions that should hopefully walk you through the steps of getting everything
+set up for running the python files.
+
+
+
+*** IMPORTANT FOR MAC USERS (maybe) ***
+
+My environment that I'm using is Windows, so some things that I mention, like 'Powershell'
+are specific to windows. If you are on mac, you shouldn't have to worry about that step.
+I am also using visual studio code for this stuff. It isn't neccessary, but it might make
+some of these steps easier to follow along.
 
 
 
@@ -13,26 +19,61 @@ I'm currently making instructions on how to replicate making a virtual environme
 
 
 
-(1) SETTING UP THE PYTHON MACHINE LEARNING STUFF (you should only have to do this once. i think)
+*** STEPS FOR SETTING UP PYTHON MACHINE LEARNING ***
+
+(1) Downloading Neccessities
+     
+    Some of this stuff, you may have already done. If you have, you don't need to do it.
+    If you aren't sure, I'd just do it to be safe.
+
 
     * Download Python
-        I think I just downloaded the most recent version using vscode, but it shouldn't matter how you download it.
+        - Download python from 'python.org' (I got the 3.12.3 version, which was recommended).
 
-    * Download pip (maybe)
-        Idk if I needed to download pip or not, but you may need to if the pip commands do not work in step 3. So
-        try that first, and then come back and do this if needed.
+        - I wouldn't reccommend downloading from the vscode-integrated system, or from microsoft
+          store (which are the same thing). This caused issues for me when using pip.
 
 
-(2) Instructions To Set Up Virtual Environment:
+    * Download Windows PowerShell (not for Mac)
+        - Click the extensions tab on vscode's left-hand bar. type in 'PowerShell' into the
+          search bar, press enter, and select the 'PowerShell' extension. Click install.
 
-    * For Windows, type the following in terminal:
-        $ python -m venv .venv
-    OR...
-    * For Mac, type the following in terminal:
-        $ python3 -m venv .venv
+        - I believe this is what was giving me issues, when installing using pip.
+        
 
-    This should create a file called '.venv' that will contain all of your local libraries and stuff for this project.
 
+(2) Pull Repository From GITHUB
+    
+    You may have already done this. That is fine. It is ideal to have created a directory
+    and then clone the repo from this directory. This means that a folder will contain the
+    'project-vote4us' folder.
+
+
+    Create a new terminal in vscode:
+        - This should be in the top bar, just click terminal.
+    
+
+    Type the following in the terminal:
+        $ git clone 'the_github_ssh_key'
+        
+        - This should have cloned our repository.
+
+
+
+(3) Instructions To Set Up Virtual Environment
+
+    First Navigate To The Parent Folder In Terminal:
+        - ideally you should have a folder encapsulating the 'project-vote4us' folder.
+          If not, it should be fine if you are just working in the 'project-vote4us' folder.
+    
+    
+    Honestly, I started making steps, but just follow this guy's tutorial:
+    (WATCH TO THE END!!)
+
+    https://youtu.be/GZbeL5AcTgw
+    
+    - You can delete the test python file you created when you're done.
+    
 
 
 (3) Instructions To Install Neccessary Libraries:
@@ -41,5 +82,9 @@ I'm currently making instructions on how to replicate making a virtual environme
         $ pip install opencv-contrib-python
         $ pip install cvlib
     
-    This should download the neccessary libraries that we use for the opencv machine learning model. Not all of the files
-    in these libraries are used, but I guess they're good to have. idk.
+    This should download the neccessary libraries that we use for the opencv machine learning
+    model. You can check that they've been installed correctly when you open the folder,
+    '/.venv/Lib/site-packages/'
+    There should be a long list of librarias that we don't really use all of.
+
+    
