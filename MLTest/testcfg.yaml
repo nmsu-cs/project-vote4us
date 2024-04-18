@@ -1,0 +1,8 @@
+path: C:/Users/theti/OneDrive/Desktop/School Suff/S4/CS371/Waldo_Project/WSG_Waldo/project-vote4us/data
+train: images/train
+val: images/train
+
+names:
+  0: waldo
+
+

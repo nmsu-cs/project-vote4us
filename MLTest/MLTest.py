@@ -10,7 +10,6 @@ from cvlib.object_detection import draw_bbox
 DEBUG = 0   # 0 is comments off, 1 is comments on
 
 
-
 # This is for object detection in video capture
 def runObjectDetection() :
     video = cv2.VideoCapture(0)   # the argument modifies the capture device, (0 = my webcam)
@@ -72,6 +71,9 @@ def runFaceDetection() :
         ret, frame  = video.read()
         cv2.imwrite("frame.jpg", frame)
         faces, conf = cv.detect_face(frame)
+
+        
+
         # when debug comments are toggled, print the object labels and confidence level
         if (DEBUG == 1) :
             print(conf)
