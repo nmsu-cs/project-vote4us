@@ -69,11 +69,7 @@ def runFaceDetection() :
     video = cv2.VideoCapture(0)   # the argument modifies the capture device, (0 = my webcam)
     while True:
         ret, frame  = video.read()
-        cv2.imwrite("frame.jpg", frame)
         faces, conf = cv.detect_face(frame)
-
-        
-
         # when debug comments are toggled, print the object labels and confidence level
         if (DEBUG == 1) :
             print(conf)
@@ -83,6 +79,7 @@ def runFaceDetection() :
             (endX,endY) = face[2],face[3]
             cv2.rectangle(frame, (startX,startY), (endX,endY), (0,255,0), 2)
         cv2.imshow("Face Detection", frame)
+        cv2.imwrite("frame.jpg", frame)      # IMPORTANT: writes to img so that it can be used by gui
         if cv2.waitKey(1) & 0xFF == ord(" "):
             os.remove('frame.jpg')
             cv2.destroyAllWindows()

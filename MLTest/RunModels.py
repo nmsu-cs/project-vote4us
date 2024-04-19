@@ -7,7 +7,7 @@ while True:
     if (userInput == '1') :
         print("press space to quit model run.")
         WaldoV1.runWald5()
-        #WaldoV1.waldoTrain()
+        #WaldoV1.waldoTrain(1)
         #WaldoV1.runWaldoIMG5()
     elif (userInput == '2') :
         print("press space to quit model run.")
