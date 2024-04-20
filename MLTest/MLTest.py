@@ -8,7 +8,7 @@ from cvlib.object_detection import draw_bbox
 # turn off floating-point round-off errors
 #TF_ENABLE_ONEDNN_OPTS = 0
 DEBUG = 0   # 0 is comments off, 1 is comments on
-CAPTURE = 1   # controls capture device
+CAPTURE = 0   # controls capture device
 
 
 # This is for object detection in video capture
@@ -86,7 +86,7 @@ def runFaceDetection() :
             (startX,startY) = face[0],face[1]
             (endX,endY) = face[2],face[3]
             cv2.rectangle(frame, (startX,startY), (endX,endY), (0,255,0), 2)
-        #cv2.imshow("Face Detection", frame)
+        cv2.imshow("Face Detection", frame)
         # press space to close window
         if cv2.waitKey(1) & 0xFF == ord(" ") :
             cv2.destroyAllWindows()
