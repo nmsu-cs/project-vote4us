@@ -6,7 +6,7 @@ from ultralytics import YOLO
 from cvlib.object_detection import draw_bbox
 
 # get the model most up to date (currently WaldoV1)
-model = YOLO(setup_ML.getCWD() + "\project-vote4us\models\WaldoV1\weights\\best.pt")
+model = YOLO(setup_ML.getCWD() + "\\models\\WaldoV1\\weights\\best.pt")
 
 # train model with user specified epochs
 def waldoTrain(epic) :
