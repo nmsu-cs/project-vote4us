@@ -1,32 +1,29 @@
 import cvlib as cv
 import cv2
 import os
+import setup_ML
 from ultralytics import YOLO
-#from ultralytics.yolo.v8.detect.predict import DetectionPredictor
 from cvlib.object_detection import draw_bbox
 
+# get the model most up to date (currently WaldoV1)
+model = YOLO(setup_ML.getCWD() + "\project-vote4us\models\WaldoV1\weights\\best.pt")
 
-# test train model
+# train model with user specified epochs
 def waldoTrain(epic) :
+    setup_ML.writeCFG()   # updates traincfg.yaml file, just in case sum stuff changed for some reason
     model = YOLO("yolov8n.yaml")
-    results = model.train(data="project-vote4us/MLTest/testcfg.yaml", epochs=epic)
+    results = model.train(data="project-vote4us/MLTest/traincfg.yaml", epochs=epic)
 
-def runWaldoIMG5():
-    # Initialize YOLO model
-    model = YOLO(r"C:\Users\theti\OneDrive\Desktop\School Suff\S4\CS371\Waldo_Project\WSG_Waldo\runs\detect\train5\weights\best.pt")
+# takes an image path as a string and runs waldo modelS
+def runWaldoIMG5(image):
     # Image path
-    image_path = r"C:\Users\theti\OneDrive\Desktop\School Suff\S4\CS371\What's Waldo\Random Pictures\Waldo 1.jpg"
+    image_path = image
     # Predict
     results = model.predict(image_path, save=True, imgsz=320, conf=0.4)
-    
-def runWaldo1() :
-    model = YOLO(r"C:\Users\theti\OneDrive\Desktop\School Suff\S4\CS371\Waldo_Project\WSG_Waldo\runs\detect\train10\weights\best.pt")
-    model.predict(source=r"C:\Users\theti\OneDrive\Desktop\School Suff\S4\CS371\What's Waldo\Random Pictures\Waldo 1.jpg", stream=False)
-    print("done")
 
+# video input with waldo modelS
 def runWald5() :
-    model = YOLO(r"C:\Users\theti\OneDrive\Desktop\School Suff\S4\CS371\Waldo_Project\WSG_Waldo\runs\detect\train5\weights\best.pt")
-    camera = cv2.VideoCapture(0)   # camera
+    camera = cv2.VideoCapture(0)   # camera hardcoded to 1st camera
     threshold = 0.4
     while True :
         ret, frame = camera.read()
@@ -44,29 +41,3 @@ def runWald5() :
             os.remove('frame.jpg')
             cv2.destroyAllWindows()
             break
-
-
-def runWaldo3() :
-    model = YOLO(r"C:\Users\theti\OneDrive\Desktop\School Suff\S4\CS371\Waldo_Project\WSG_Waldo\runs\detect\train10\weights\best.pt")
-    VIDEOS_DIR = os.path.join('.', 'video')
-    video_path = os.path.join(VIDEOS_DIR, 'wald.mp4')
-    video_path_out = '{}_out.mp4'.format(video_path)
-    camera = cv2.VideoCapture(video_path)   # camera
-    ret, frame = camera.read()
-    H, W, _ = frame.shape
-    video_path_out = r"C:\Users\theti\OneDrive\Desktop\School Suff\S4\CS371\Waldo_Project\WSG_Waldo\video"
-    out = cv2.VideoWriter(video_path_out, cv2.VideoWriter_fourcc(*'MP4V'), int(camera.get(cv2.CAP_PROP_FPS)), (W, H))
-    threshold = 0.5
-    while ret:
-        results = model(frame)[0]
-        for result in results.boxes.data.tolist():
-            x1, y1, x2, y2, score, class_id = result
-            if score > threshold:
-                cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 4)
-                cv2.putText(frame, results.names[int(class_id)].upper(), (int(x1), int(y1 - 10)),
-                            cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA)
-        out.write(frame)
-        ret, frame = camera.read()
-    camera.release()
-    out.release()
-    cv2.destroyAllWindows()
