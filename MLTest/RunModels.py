@@ -6,8 +6,10 @@ while True:
     userInput = input("\nWhich model would you like to run?\n\t1) Waldo Detection\n\t2) Face Detection\n\tt) Train Waldo Model\n\tq) Quit\n")
     if (userInput == '1') :
         print("press space to quit model run.")
-        WaldoV1.runWald5()
-        #WaldoV1.runWaldoIMG5()
+        image = "D:\\Code\\Whats_Waldo\\WaldoImages\\Waldo1.png"   # enter path to your image
+        device = 0     # laptop cameras are default 0
+        WaldoV1.runWaldo(device)
+        #WaldoV1.runWaldoIMG(image)     # uncomment when you want to run the image detection
     elif (userInput == '2') :
         print("press space to quit model run.")
         MLTest.runFaceDetection()
