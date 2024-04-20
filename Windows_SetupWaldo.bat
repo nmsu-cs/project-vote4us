@@ -4,7 +4,6 @@
 cd ..
 
 :: Create virtual environment
-::python3 -m venv .venv        :: (for mac)
 python -m venv .venv
 
 :: Activate virtual environment
@@ -18,6 +17,7 @@ pip install tensorflow
 pip install ultralytics
 
 :: run the python files for setting up .yaml file
-python project-vote4us\MLTest\setup_ML.py
+cd project-vote4us
+python MLTest\setup_ML.py
 
 echo Virtual Environment setup completed.
