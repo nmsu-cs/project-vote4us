@@ -25,7 +25,7 @@ def runWaldoIMG(image):
     frame = cv2.imread(image)
     # Predict
     #results = model.predict(image_path, save=True, imgsz=320, conf=0.395)
-    results = model(image)[0]
+    results = model(frame)[0]
     print(results)
     # get results list
     resList = results.boxes.data.tolist()
