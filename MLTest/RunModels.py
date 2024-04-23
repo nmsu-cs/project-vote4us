@@ -1,6 +1,8 @@
 import MLTest
 import WaldoV1
+import setup_ML
 
+setup_ML.writeCFG()
 
 while True:
     userInput = input("\nWhich model would you like to run?\n\t1) Waldo Detection\n\t2) Face Detection\n\tt) Train Waldo Model\n\tq) Quit\n")
