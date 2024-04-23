@@ -11,13 +11,13 @@ WALDOPERCENT = 0.0    # defaulted 0.0
 THRESHOLD = 0.395
 
 # get the model most up to date (currently WaldoV1)
-model = YOLO(setup_ML.getCWD() + "\\models\\WaldoV2\\weights\\best.pt")
+model = YOLO(setup_ML.getCWD() + "\\project-vote4us\\models\\WaldoV3\\weights\\best.pt")
 
 # train model with user specified epochs
 def waldoTrain(epic) :
     setup_ML.writeCFG()   # updates traincfg.yaml file, just in case sum stuff changed for some reason
     model = YOLO("yolov8n.yaml")
-    results = model.train(data="MLTest/traincfg.yaml", epochs=epic)
+    results = model.train(data="project-vote4us/MLTest/traincfg.yaml", epochs=epic)
 
 # takes an image path as a string and runs waldo modelS
 def runWaldoIMG(image):
