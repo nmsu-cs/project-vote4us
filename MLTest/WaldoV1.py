@@ -8,7 +8,7 @@ from cvlib.object_detection import draw_bbox
 # define waldo percentage global variable
 WALDOPERCENT = 0.0    # defaulted 0.0
 # define global threshold variable. Best performance currently at 0.395
-THRESHOLD = 0.395
+THRESHOLD = 0.55
 
 # get the model most up to date (currently WaldoV1)
 model = YOLO(setup_ML.getCWD() + "\\project-vote4us\\models\\WaldoV3\\weights\\best.pt")
@@ -68,6 +68,7 @@ def runWaldo(device) :
             cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA)
         cv2.imwrite("frame.jpg", frame)
         cv2.imshow("Waldo Detection", frame)
+        WALDOPERCENT = 0.0
         if cv2.waitKey(1) & 0xFF == ord(" "):
             os.remove('frame.jpg')
             cv2.destroyAllWindows()
