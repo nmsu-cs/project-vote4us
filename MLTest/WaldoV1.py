@@ -8,10 +8,10 @@ from cvlib.object_detection import draw_bbox
 # define waldo percentage global variable
 WALDOPERCENT = 0.0    # defaulted 0.0
 # define global threshold variable. Best performance currently at 0.395
-THRESHOLD = 0.55
+THRESHOLD = 0.4
 
 # get the model most up to date (currently WaldoV1)
-model = YOLO(setup_ML.getCWD() + "\\project-vote4us\\models\\WaldoV3\\weights\\best.pt")
+model = YOLO(setup_ML.getCWD() + "\\project-vote4us\\models\\WaldoV3.1\\weights\\best.pt")
 
 # train model with user specified epochs
 def waldoTrain(epic) :
@@ -63,13 +63,15 @@ def runWaldo(device) :
                 WALDOPERCENT = score
                 x1, y1, x2, y2, WALDOPERCENT, dummy = result
         name = "Waldo"
-        cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 4)
-        cv2.putText(frame, name.upper(), (int(x1), int(y1 - 10)),
-            cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA)
+        if WALDOPERCENT != 0.0 :    
+            cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 4)
+            cv2.putText(frame, name.upper(), (int(x1), int(y1 - 10)),
+                cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA)
         cv2.imwrite("frame.jpg", frame)
         cv2.imshow("Waldo Detection", frame)
         WALDOPERCENT = 0.0
         if cv2.waitKey(1) & 0xFF == ord(" "):
+            camera.release()
             os.remove('frame.jpg')
             cv2.destroyAllWindows()
             break
