@@ -11,7 +11,7 @@ WALDOPERCENT = 0.0    # defaulted 0.0
 THRESHOLD = 0.4
 
 # get the model most up to date (currently WaldoV1)
-model = YOLO(setup_ML.getCWD() + "\\project-vote4us\\models\\WaldoV3.1\\weights\\best.pt")
+model = YOLO(setup_ML.getCWD() + "\\project-vote4us\\models\\WaldoV4\\weights\\best.pt")
 
 # train model with user specified epochs
 def waldoTrain(epic) :

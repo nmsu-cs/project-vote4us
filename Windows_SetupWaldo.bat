@@ -1,7 +1,7 @@
 @echo off
 
 :: Navigate outside of the project-vote4us directory
-cd ..
+
 
 :: Create virtual environment
 python -m venv .venv
@@ -17,7 +17,7 @@ pip install tensorflow
 pip install ultralytics
 
 :: run the python files for setting up .yaml file
-cd project-vote4us
+
 python MLTest\setup_ML.py
 
 echo Virtual Environment setup completed.
