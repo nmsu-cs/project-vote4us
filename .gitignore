@@ -1,5 +1,0 @@
-# ignore stuff inside MLTest that is user specific
-MLTest/__pycache__
-MLTest/traincfg.yaml
-frame.jpg
-.venv
